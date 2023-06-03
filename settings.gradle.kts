@@ -2,6 +2,7 @@ rootProject.name = "MyApplication"
 
 include(":androidApp")
 include(":shared")
+includeBuild("gradle/build-logic")
 
 pluginManagement {
     repositories {
@@ -9,12 +10,12 @@ pluginManagement {
         maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
         google()
     }
-
     plugins {
         val kotlinVersion = extra["kotlin.version"] as String
         val agpVersion = extra["agp.version"] as String
         val composeVersion = extra["compose.version"] as String
 
+        id("settings-plugin")
         kotlin("jvm").version(kotlinVersion)
         kotlin("multiplatform").version(kotlinVersion)
         kotlin("android").version(kotlinVersion)
